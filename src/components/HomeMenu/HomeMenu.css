@@ -1,0 +1,13 @@
+.homemenu-slide {
+  width: auto;
+  padding: 0 14px;
+  text-align: center;
+  color: #8e8787;
+  line-height: 48px;
+  border-bottom: 2px solid transparent;
+}
+.homemenu-slide.active {
+  color: #d71a1b;
+  font-weight: 500;
+  border-bottom: 2px solid #d71a1b;
+}

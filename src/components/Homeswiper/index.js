@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-import { WhiteSpace } from "antd-mobile";
+import { WingBlank } from "antd-mobile";
 import Swiper from "swiper";
-import "./Homeswiper.css";
+import "./HomeSwiper.css";
 import "../../../node_modules/swiper/css/swiper.min.css";
 
-export default class index extends Component {
+export default class HomeSwiper extends Component {
   constructor(props) {
     super(props);
     this.state = {
       imgUrl: [
-        "https://i.loli.net/2020/06/13/4bWHtZ3yevs1cg9.png",
-        "https://i.loli.net/2020/06/13/ZCcdrSRf7HgbKqF.png",
-        "https://i.loli.net/2020/06/13/lsWhvU634uK5k2Y.png",
+        "https://tva2.sinaimg.cn/large/eda28311gy1gfsz6hcko1j23h02bchdt.jpg",
+        "https://tvax3.sinaimg.cn/large/eda28311gy1gfsz71uk9mj23h02bctx1.jpg",
+        "https://tvax4.sinaimg.cn/large/eda28311gy1gfsz7dz6dtj23h02bc1a9.jpg",
       ],
     };
   }
   componentDidMount() {
-    new Swiper(".swiper-container", {
+    new Swiper(".homeswiper-container", {
       pagination: {
         el: ".swiper-pagination",
       },
@@ -30,32 +30,19 @@ export default class index extends Component {
   }
   render() {
     return (
-      <div
-        className="swiper-container"
-        style={{ background: "red", height: "auto" }}
-      >
-        <WhiteSpace size="lg" />
-        <div
-          className="swiper-wrapper"
-          size="md"
-          style={{ textAlign: "center" }}
-        >
-          {this.state.imgUrl.map((item) => {
+      <WingBlank className="swiper-container homeswiper-container" size="lg">
+        <div className="swiper-wrapper homeswiper-wrapper" size="md">
+          {this.state.imgUrl.map((item, index) => {
             return (
-              <div className="swiper-slide">
-                <a href="" className="swiperItem">
-                  <img
-                    src={item}
-                    style={{ width: "90%", borderRadius: "10px" }}
-                    alt=""
-                  />
+              <div className="swiper-slide homeswiper-slide" key={index}>
+                <a href={item} className="swiperItem">
+                  <img src={item} alt="" />
                 </a>
               </div>
             );
           })}
         </div>
-        <WhiteSpace size="lg" />
-      </div>
+      </WingBlank>
     );
   }
 }

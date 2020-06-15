@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Carousel } from "antd-mobile";
 
-export default class index extends Component {
+export default class HomeCarousel extends Component {
   state = {
     data: ["1", "2", "3"],
     imgHeight: 170,
@@ -11,9 +11,9 @@ export default class index extends Component {
     setTimeout(() => {
       this.setState({
         data: [
-          "4bWHtZ3yevs1cg9",
-          "ZCcdrSRf7HgbKqF",
-          "lsWhvU634uK5k2Y",
+          "eda28311gy1gfsz6hcko1j23h02bchdt",
+          "eda28311gy1gfsz71uk9mj23h02bctx1",
+          "eda28311gy1gfsz7dz6dtj23h02bc1a9",
         ],
       });
     }, 100);
@@ -24,12 +24,8 @@ export default class index extends Component {
         <Carousel
           autoplay={false}
           infinite
-          dotStyle={{marginBottom:"20px",marginRight:"15px"}}
-          dotActiveStyle={{marginBottom:"20px",marginRight:"15px"}}
-          beforeChange={(from, to) =>
-            console.log(`slide from ${from} to ${to}`)
-          }
-          afterChange={(index) => console.log("slide to", index)}
+          dotActiveStyle={{ marginBottom: "15px", marginRight: "15px" }}
+          dotStyle={{ marginBottom: "15px", marginRight: "15px" }}
         >
           {this.state.data.map((val) => (
             <a
@@ -42,7 +38,7 @@ export default class index extends Component {
               }}
             >
               <img
-                src={`https://i.loli.net/2020/06/13/${val}.png`}
+                src={`https://tvax2.sinaimg.cn/large/${val}.jpg`}
                 alt=""
                 style={{ width: "100%", verticalAlign: "top" }}
                 onLoad={() => {

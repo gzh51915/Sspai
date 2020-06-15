@@ -1,14 +1,20 @@
-import React from 'react';
-import Navbar from './components/Navbar'
-import Carousel from './components/Carousel'
-import Homeswiper from './components/Homeswiper'
+import React from "react";
+import "./App.css";
+import { WhiteSpace } from "antd-mobile";
+import HomeNavbar from "./components/HomeNavbar";
+import HomeCarousel from "./components/HomeCarousel";
+import HomeSwiper from "./components/HomeSwiper";
+import ArticleList from "./pages/ArticleList";
 
 function App() {
   return (
-    <div>
-        <Navbar />
-        <Carousel />
-        <Homeswiper />
+    <div className="App">
+      <HomeNavbar />
+      <HomeCarousel />
+      <WhiteSpace size="lg" />
+      <HomeSwiper />
+      <WhiteSpace size="lg" />
+      <ArticleList />
     </div>
   );
 }

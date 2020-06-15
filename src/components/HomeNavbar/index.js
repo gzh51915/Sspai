@@ -1,9 +1,7 @@
 import React from "react";
 import { NavBar, Icon, Button } from "antd-mobile";
 
-
-
-export default function index() {
+export default function HomeNavbar() {
   return (
     <div>
       <NavBar
@@ -13,20 +11,21 @@ export default function index() {
             type="primary"
             inline
             size="small"
-            style={{ marginRight: "4px",height:"50px"}}
+            style={{ marginRight: "4px", height: "50px" }}
           >
             <img
               src="https://cdn.sspai.com/sspai/assets/img/favicon/icon.ico"
-               height="50" alt=""
+              height="50"
+              alt=""
             />
           </Button>
         }
         rightContent={[
           <Icon key="0" type="search" style={{ marginRight: "16px" }} />,
           <Icon key="1" type="ellipsis" style={{ marginRight: "16px" }} />,
-          <Icon key="2" type="check-circle"  />,
+          <Icon key="2" type="check-circle" />,
         ]}
-        style={{height:"50px"}}
+        style={{ height: "50px" }}
       >
         多数派
       </NavBar>
