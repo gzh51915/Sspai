@@ -33,17 +33,39 @@ export default function ArticleListItem(props) {
   const [cdnUrl] = useState("https://cdn.sspai.com/");
   // 定义文章列表数据
   const [articleList, setArticleList] = useState([]);
+  const [skip, setSkip] = useState(10);
   // 根据点击的文章类型获取文章列表数据
+  // 看着复杂其实是为了解决useEffect的重复调用或只执行一次的问题
   useEffect(
     ({ type } = props.match.params) => {
       getList("/" + type).then((res) => {
         if (res.data.code === 200) {
           setArticleList(res.data.data);
+          // 切换文章类型时重置skip
+          setSkip(0);
         }
       });
     },
+    // eslint-disable-next-line
     [props.match.params.type]
   );
+
+  // 穷人版下拉刷新
+  useEffect(({ type } = props.match.params) => {
+    window.onscroll = function () {
+      var scrollTop = document.documentElement.scrollTop;
+      var scrollHeight = document.body.scrollHeight;
+      if (scrollHeight - scrollTop <= 1000) {
+        getList("/" + type, skip).then((res) => {
+          if (res.data.code === 200) {
+            setArticleList(articleList.concat(res.data.data));
+            setSkip(skip + 10);
+          }
+        });
+      }
+    };
+  });
+
   return (
     <React.Fragment>
       {articleList.map((item) => {
@@ -51,7 +73,12 @@ export default function ArticleListItem(props) {
           <React.Fragment key={item.id}>
             <WingBlank size="md">
               <figure className="articleCard">
-                <div className="imgbox">
+                <div
+                  className="imgbox"
+                  onClick={() =>
+                    (window.location.href = `https://sspai.com/post/${item.id}`)
+                  }
+                >
                   <img
                     className="articleImg"
                     src={cdnUrl + item.banner}
@@ -71,7 +98,13 @@ export default function ArticleListItem(props) {
                   </div>
                 </div>
                 <figcaption className="articleTitle">
-                  <h3>{item.title}</h3>
+                  <h3
+                    onClick={() =>
+                      (window.location.href = `https://sspai.com/post/${item.id}`)
+                    }
+                  >
+                    {item.title}
+                  </h3>
                 </figcaption>
               </figure>
             </WingBlank>

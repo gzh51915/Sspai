@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import HomeMenu from "../../components/HomeMenu";
 import { WhiteSpace } from "antd-mobile";
 import ArticleListItem from "../../components/ArticleListItem";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 export default class ArticleList extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ export default class ArticleList extends Component {
       <div>
         <HomeMenu />
         <WhiteSpace size="lg" />
+        <Redirect from="/" to="/article/index" exact />
         <Route path="/article/:type" component={ArticleListItem} exact />
       </div>
     );

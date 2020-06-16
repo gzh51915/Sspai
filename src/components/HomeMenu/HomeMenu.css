@@ -5,6 +5,7 @@
   color: #8e8787;
   line-height: 48px;
   border-bottom: 2px solid transparent;
+  transition: 0.3s ease;
 }
 .homemenu-slide.active {
   color: #d71a1b;

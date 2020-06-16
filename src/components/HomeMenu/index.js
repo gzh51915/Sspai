@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { WingBlank } from "antd-mobile";
-import { getMenu } from "../../utils/http";
+import { getHomeData } from "../../utils/http";
 import Swiper from "swiper";
 import "../../../node_modules/swiper/css/swiper.min.css";
 import "./HomeMenu.css";
@@ -14,12 +14,13 @@ export default class HomeMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      menuUrl: "/navlist",
       menuData: store.getState().menuData,
     };
   }
   componentDidMount() {
     // 获取文章类型列表
-    getMenu("/navlist").then((res) => {
+    getHomeData(this.state.menuUrl).then((res) => {
       if (res.data.code === 200) {
         store.dispatch(reMenu(res.data.data));
       }

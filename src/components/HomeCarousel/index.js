@@ -1,50 +1,52 @@
 import React, { Component } from "react";
+import { getHomeData } from "../../utils/http";
 import { Carousel } from "antd-mobile";
 
 export default class HomeCarousel extends Component {
   state = {
-    data: ["1", "2", "3"],
+    bannerUrl: "/banner",
     imgHeight: 170,
+    bannerData: [],
   };
   componentDidMount() {
-    // simulate img loading
-    setTimeout(() => {
-      this.setState({
-        data: [
-          "eda28311gy1gfsz6hcko1j23h02bchdt",
-          "eda28311gy1gfsz71uk9mj23h02bctx1",
-          "eda28311gy1gfsz7dz6dtj23h02bc1a9",
-        ],
-      });
-    }, 100);
+    getHomeData(this.state.bannerUrl).then((res) => {
+      if (res.data.code === 200) {
+        this.setState({
+          bannerData: res.data.data,
+        });
+      }
+    });
   }
   render() {
     return (
       <div>
         <Carousel
-          autoplay={false}
+          autoplay={true}
           infinite
           dotActiveStyle={{ marginBottom: "15px", marginRight: "15px" }}
           dotStyle={{ marginBottom: "15px", marginRight: "15px" }}
         >
-          {this.state.data.map((val) => (
+          {this.state.bannerData.map((item) => (
             <a
-              key={val}
-              href="http://www.alipay.com"
+              key={item._id}
+              href={item.url}
               style={{
-                display: "inline-block",
-                width: "100%",
-                height: this.state.imgHeight,
+                display: "block",
               }}
             >
               <img
-                src={`https://tvax2.sinaimg.cn/large/${val}.jpg`}
+                src={`https://cdn.sspai.com/${item.image}`}
                 alt=""
-                style={{ width: "100%", verticalAlign: "top" }}
+                style={{
+                  position: "relative",
+                  verticalAlign: "middle",
+                  objectFit: "cover",
+                  width: "100%",
+                  height: this.state.imgHeight,
+                }}
                 onLoad={() => {
                   // fire window resize event to change height
                   window.dispatchEvent(new Event("resize"));
-                  this.setState({ imgHeight: "auto" });
                 }}
               />
             </a>
