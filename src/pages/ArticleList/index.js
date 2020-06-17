@@ -14,8 +14,8 @@ export default class ArticleList extends Component {
       <div>
         <HomeMenu />
         <WhiteSpace size="lg" />
-        <Redirect from="/" to="/article/index" exact />
         <Route path="/article/:type" component={ArticleListItem} exact />
+        <Redirect from="/article" to="/article/index" exact />
       </div>
     );
   }

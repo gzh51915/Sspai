@@ -25,9 +25,9 @@ export default class HomeSwiper extends Component {
       pagination: {
         el: ".swiper-pagination",
       },
+      initialSlide: 0,
       loop: true,
       autoplay: false,
-      initialSlide: 0,
       slidesPerView: "auto",
       loopedSlides: 4,
       //   setWrapperSize: true,
@@ -38,20 +38,22 @@ export default class HomeSwiper extends Component {
   }
   render() {
     return (
-      <WingBlank className="swiper-container homeswiper-container" size="lg">
-        <div className="swiper-wrapper homeswiper-wrapper">
-          {this.state.subSwiperData.map((item) => {
-            return (
-              <div className="swiper-slide homeswiper-slide" key={item._id}>
-                <a href={item.url} className="swiperItem">
-                  <img
-                    src={`https://cdn.sspai.com/${item.image}`}
-                    alt={item.title}
-                  />
-                </a>
-              </div>
-            );
-          })}
+      <WingBlank size="lg">
+        <div className="swiper-container homeswiper-container">
+          <div className="swiper-wrapper homeswiper-wrapper">
+            {this.state.subSwiperData.map((item) => {
+              return (
+                <div className="swiper-slide homeswiper-slide" key={item._id}>
+                  <a href={item.url} className="swiperItem">
+                    <img
+                      src={`https://cdn.sspai.com/${item.image}`}
+                      alt={item.title}
+                    />
+                  </a>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </WingBlank>
     );

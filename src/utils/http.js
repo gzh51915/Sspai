@@ -15,3 +15,31 @@ export const getList = (type, skip) => {
     },
   });
 };
+
+// 请求验证码
+export const getVcode = () => {
+  return axios.get("/users/vcode");
+};
+
+// 请求注册
+export const getReg = ({ username, password, vcode }) => {
+  return axios({
+    method: "POST",
+    url: "/users/reg",
+    data: {
+      username,
+      password,
+      vcode,
+    },
+  });
+};
+
+// 登录
+export const getLogin = ({ username, password }) => {
+  return axios.get("/users/login", {
+    params: {
+      username,
+      password,
+    },
+  });
+};

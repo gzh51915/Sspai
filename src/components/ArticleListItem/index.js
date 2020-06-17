@@ -33,7 +33,7 @@ export default function ArticleListItem(props) {
   const [cdnUrl] = useState("https://cdn.sspai.com/");
   // 定义文章列表数据
   const [articleList, setArticleList] = useState([]);
-  const [skip, setSkip] = useState(10);
+  const [skip, setSkip] = useState(5);
   // 根据点击的文章类型获取文章列表数据
   // 看着复杂其实是为了解决useEffect的重复调用或只执行一次的问题
   useEffect(
@@ -59,7 +59,7 @@ export default function ArticleListItem(props) {
         getList("/" + type, skip).then((res) => {
           if (res.data.code === 200) {
             setArticleList(articleList.concat(res.data.data));
-            setSkip(skip + 10);
+            setSkip(skip + 5);
           }
         });
       }
