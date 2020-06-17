@@ -1,0 +1,7 @@
+.adCard{
+    position: relative;
+}
+.adButton{
+    position: absolute;
+    left: 0;
+}
