@@ -1,20 +1,34 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { Button } from "antd-mobile";
+import { Button, Popover } from "antd-mobile";
 import "./UserLogin.css";
+import { options } from "less";
+const Item = Popover.Item;
 
 function UserLogin(props) {
-  console.log(props);
-
+  const goItem = (opt) => {
+    props.history.push(opt.props.vurl);
+  };
   return (
     <>
       {props.isLogin ? (
-        <div className="userPic" onClick={() => props.history.push("/reg")}>
-          <img
-            src="http://group.photo.store.qq.com/qun/V12btnaW15bRxB/V3tdUkbGlRSzVYoNcEJ/800?w5=592&h5=634&rf=viewer_421"
-            alt=""
-          />
-        </div>
+        <Popover
+          overlay={[
+            <Item key="0" vurl="/user">
+              个人主页
+            </Item>,
+            <Item key="1">设置</Item>,
+            <Item key="2">退出登录</Item>,
+          ]}
+          onSelect={goItem}
+        >
+          <div className="userPic">
+            <img
+              src="http://group.photo.store.qq.com/qun/V12btnaW15bRxB/V3tdUkbGlRSzVYoNcEJ/800?w5=592&h5=634&rf=viewer_421"
+              alt=""
+            />
+          </div>
+        </Popover>
       ) : (
         <Button
           className="homeLogin"

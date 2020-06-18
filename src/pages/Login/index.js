@@ -25,8 +25,14 @@ export default class Register extends Component {
     });
   }
 
+  pressEnter = (eve) => {
+    if (eve.which != 13) return;
+    this.checkLogin();
+  };
   checkLogin = () => {
     let { username, password } = this.state;
+    console.log(1);
+
     getLogin({ username, password }).then((res) => {
       if (res.data.code === 200) {
         Toast.success("登录成功", 2);
@@ -63,6 +69,8 @@ export default class Register extends Component {
             placeholder="密码"
             type="password"
             onChange={this.changeMsg.bind(this, "password")}
+            onVirtualKeyboardConfirm={this.checkLogin}
+            onKeyDown={this.pressEnter}
           ></InputItem>
           <WhiteSpace size="lg" />
           <Flex justify="between">

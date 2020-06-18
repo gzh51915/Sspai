@@ -21,6 +21,7 @@ export default class HomeMenu extends Component {
   componentDidMount() {
     // 获取文章类型列表
     getHomeData(this.state.menuUrl).then((res) => {
+      console.log(res);
       if (res.data.code === 200) {
         store.dispatch(reMenu(res.data.data));
       }

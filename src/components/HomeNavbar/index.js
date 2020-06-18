@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { NavBar, Icon, Button } from "antd-mobile";
 import Search from "../Search";
-// import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import UserLogin from "../UserLogin";
 
-export default function HomeNavbar() {
-  const [isLogin, setIsLogin] = useState(sessionStorage.user);
+function HomeNavbar(props) {
+  const [isLogin] = useState(sessionStorage.user);
   const [open, setOpen] = useState(false);
   return (
     <div style={{ position: "relative" }}>
@@ -18,6 +18,7 @@ export default function HomeNavbar() {
             key="0"
             size="small"
             style={{ marginRight: "4px", height: "50px" }}
+            onClick={() => props.history.push("/")}
           >
             <img
               src="https://cdn.sspai.com/sspai/assets/img/favicon/icon.ico"
@@ -44,7 +45,7 @@ export default function HomeNavbar() {
             color="#333"
             style={{ marginRight: "16px" }}
           />,
-          <UserLogin isLogin />,
+          <UserLogin isLogin={isLogin} />,
         ]}
         style={{ height: "50px" }}
       >
@@ -54,3 +55,4 @@ export default function HomeNavbar() {
     </div>
   );
 }
+export default withRouter(HomeNavbar);

@@ -38,13 +38,19 @@ export default function ArticleListItem(props) {
   // 看着复杂其实是为了解决useEffect的重复调用或只执行一次的问题
   useEffect(
     ({ type } = props.match.params) => {
-      getList("/" + type).then((res) => {
-        if (res.data.code === 200) {
-          setArticleList(res.data.data);
-          // 切换文章类型时重置skip
-          setSkip(0);
-        }
-      });
+      getList("/" + type)
+        .then((res) => {
+          console.log(res);
+          if (res.data.code === 200) {
+            setArticleList(res.data.data);
+            // 切换文章类型时重置skip
+            setSkip(0);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setArticleList([]);
+        });
     },
     // eslint-disable-next-line
     [props.match.params.type]
