@@ -40,7 +40,6 @@ export default function ArticleListItem(props) {
     ({ type } = props.match.params) => {
       getList("/" + type)
         .then((res) => {
-          console.log(res);
           if (res.data.code === 200) {
             setArticleList(res.data.data);
             // 切换文章类型时重置skip

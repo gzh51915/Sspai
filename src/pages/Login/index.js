@@ -31,12 +31,10 @@ export default class Register extends Component {
   };
   checkLogin = () => {
     let { username, password } = this.state;
-    console.log(1);
-
     getLogin({ username, password }).then((res) => {
       if (res.data.code === 200) {
         Toast.success("登录成功", 2);
-        sessionStorage.user = res.data.code;
+        sessionStorage.user = res.data.data[0].id;
         this.props.history.push("/");
       } else {
         Toast.fail("帐号或密码错误", 2);

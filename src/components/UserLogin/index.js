@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { Button, Popover } from "antd-mobile";
 import "./UserLogin.css";
-import { options } from "less";
+import { getUserInfo } from "../../utils/http";
 const Item = Popover.Item;
 
 function UserLogin(props) {
+  const [userpic, setUserPic] = useState("");
+  useEffect(() => {
+    getUserInfo(sessionStorage.user)
+      .then((res) => {
+        console.log(res);
+        if (res.data.code === 200) {
+          setUserPic(res.data.data[0].img);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   const goItem = (opt) => {
+    console.log(opt);
+    switch (opt.key) {
+      case "0" && "1":
+        props.history.push(opt.props.vurl);
+        break;
+      case "2":
+        delete sessionStorage.user;
+        props.history.push("/");
+        break;
+    }
     props.history.push(opt.props.vurl);
   };
   return (
@@ -23,10 +46,7 @@ function UserLogin(props) {
           onSelect={goItem}
         >
           <div className="userPic">
-            <img
-              src="http://group.photo.store.qq.com/qun/V12btnaW15bRxB/V3tdUkbGlRSzVYoNcEJ/800?w5=592&h5=634&rf=viewer_421"
-              alt=""
-            />
+            <img src={userpic} alt="" />
           </div>
         </Popover>
       ) : (

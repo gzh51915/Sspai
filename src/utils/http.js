@@ -43,3 +43,7 @@ export const getLogin = ({ username, password }) => {
     },
   });
 };
+
+export const getUserInfo = (id) => {
+  return axios.get("/users/getUser?id=" + id);
+};
