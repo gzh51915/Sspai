@@ -1,0 +1,23 @@
+.site-layout-content {
+    background: #fff;
+    padding: 24px;
+    min-height: 280px;
+}
+.ant-breadcrumb-link{
+    font-size: 18px;
+    color: #333;
+}
+.logoBox{
+    display: inline-block;
+    height: 100%;
+    width: 170px;
+    background: url("https://post.sspai.com/sspai-ui@1.15.10/img/logo_white.ce70a4d2.png") no-repeat left;
+    background-size: auto 80%;
+}
+.logotitle{
+    display: inline-block;
+    height: 100%;
+    font-size: 24px;
+    color: white;
+    vertical-align: top;
+}
