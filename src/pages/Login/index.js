@@ -26,7 +26,7 @@ export default class Register extends Component {
   }
 
   pressEnter = (eve) => {
-    if (eve.which != 13) return;
+    if (eve.which !== 13) return;
     this.checkLogin();
   };
   checkLogin = () => {
