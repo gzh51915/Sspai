@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { WingBlank } from "antd-mobile";
+import {Toast, WingBlank} from "antd-mobile";
 import { getHomeData } from "../../utils/http";
 import Swiper from "swiper";
 import "../../../node_modules/swiper/css/swiper.min.css";
@@ -21,7 +21,6 @@ export default class HomeMenu extends Component {
   componentDidMount() {
     // 获取文章类型列表
     getHomeData(this.state.menuUrl).then((res) => {
-      console.log(res);
       if (res.data.code === 200) {
         store.dispatch(reMenu(res.data.data));
       }

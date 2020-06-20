@@ -8,10 +8,10 @@ export const getHomeData = (type) => {
 // 请求文章列表
 export const getList = (type, skip) => {
   //type users goods
-  return axios.get("/article" + type, {
+  return axios.get("/article/" + type, {
     params: {
       skip,
-      limit: 5,
+      limit: 10,
     },
   });
 };

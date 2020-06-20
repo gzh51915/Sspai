@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { WingBlank, WhiteSpace } from "antd-mobile";
+import {WingBlank, WhiteSpace, Button, Toast} from "antd-mobile";
 import { getList } from "../../utils/http";
 import dayjs from "dayjs";
 import "./ArticleListItem.css";
+import logger from "less/lib/less/logger";
 
 export default function ArticleListItem(props) {
   // 配置dayjs插件
@@ -31,47 +32,55 @@ export default function ArticleListItem(props) {
 
   // sspai的cdn链接
   const [cdnUrl] = useState("https://cdn.sspai.com/");
+  //控制请求
+  const [request,setrequest] = useState(true)
   // 定义文章列表数据
   const [articleList, setArticleList] = useState([]);
-  const [skip, setSkip] = useState(5);
+  // 定义文章列表总条数
+  const [total, setTotal] = useState(10);
+  //控制条数
+  const [skip, setSkip] = useState(10);
   // 根据点击的文章类型获取文章列表数据
   // 看着复杂其实是为了解决useEffect的重复调用或只执行一次的问题
-  useEffect(
-    ({ type } = props.match.params) => {
-      getList("/" + type)
-        .then((res) => {
-          console.log(res);
-          if (res.data.code === 200) {
-            setArticleList(res.data.data);
-            // 切换文章类型时重置skip
-            setSkip(0);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          setArticleList([]);
-        });
-    },
-    // eslint-disable-next-line
-    [props.match.params.type]
-  );
+  useEffect(  ()=>{
+    const {type} = props.match.params;
+    setrequest(true)
+    if(request){
+      getList(type).then(res=>{
+        if(res.data.code === 200){
+          setArticleList(res.data.data)
+          setTotal(res.data.total)
+        }
+      }).catch(err=>{
+        setArticleList([])
+      })
+    }
+    return function () {
+      //组件销毁时停止axios请求
+      setrequest(false)
+      //设置条数从10开始
+      setSkip(10)
+    }
+  },[props.match.params.type])
 
-  // 穷人版下拉刷新
-  useEffect(({ type } = props.match.params) => {
-    window.onscroll = function () {
-      var scrollTop = document.documentElement.scrollTop;
-      var scrollHeight = document.body.scrollHeight;
-      if (scrollHeight - scrollTop <= 1000) {
-        getList("/" + type, skip).then((res) => {
-          if (res.data.code === 200) {
-            setArticleList(articleList.concat(res.data.data));
-            setSkip(skip + 5);
-          }
-        });
-      }
-    };
-  });
+  const showMore =  ()=>{
+    const {type} = props.match.params;
+    setSkip(skip + 10)
+    if(skip < total){
+      getList(type,skip).then(res=>{
+        if(res.data.code === 200){
+          setArticleList([...articleList,...res.data.data])
+        }
+      })
+    }else {
+       Toast.fail('没有更多的数据了')
+    }
 
+  }
+
+  if(!articleList.length ){
+    return <div>暂无数据</div>
+  }
   return (
     <React.Fragment>
       {articleList.map((item) => {
@@ -118,6 +127,10 @@ export default function ArticleListItem(props) {
           </React.Fragment>
         );
       })}
+      <div style={{backgroundColor:"#fff",boxSizing:"border-box",
+        margin:'0 8px 20px',lineHeight:'50px',textAlign:"center",
+        fontSize:'16px',color:"#666"
+      }} onClick={showMore}>查看更多</div>
     </React.Fragment>
   );
 }
