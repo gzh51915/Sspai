@@ -44,6 +44,33 @@ export const getLogin = ({ username, password }) => {
   });
 };
 
+// 根据id获取用户信息
 export const getUserInfo = (id) => {
   return axios.get("/users/getUser?id=" + id);
+};
+
+// 修改头像
+export const editUserPic = (id, img) => {
+  return axios.post("users/userimgedit", {
+    id,
+    img,
+  });
+};
+
+// 修改昵称
+export const editNickName = (id, nickname) => {
+  return axios.get("users/changenickname", {
+    params: {
+      id,
+      nickname,
+    },
+  });
+};
+
+// 修改密码
+export const editPassword = (id, password) => {
+  return axios.post("users/changepassword", {
+    id,
+    password,
+  });
 };

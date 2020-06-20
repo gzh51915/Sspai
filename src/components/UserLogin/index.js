@@ -10,7 +10,6 @@ function UserLogin(props) {
   useEffect(() => {
     getUserInfo(sessionStorage.user)
       .then((res) => {
-        console.log(res);
         if (res.data.code === 200) {
           setUserPic(res.data.data[0].img);
         }
@@ -20,15 +19,16 @@ function UserLogin(props) {
       });
   });
   const goItem = (opt) => {
-    console.log(opt);
     switch (opt.key) {
-      case "0" && "1":
+      case "0":
         props.history.push(opt.props.vurl);
         break;
-      case "2":
+      case "1":
         delete sessionStorage.user;
         props.history.push("/");
         break;
+      default:
+        props.history.push(opt.props.vurl);
     }
     props.history.push(opt.props.vurl);
   };
@@ -38,15 +38,14 @@ function UserLogin(props) {
         <Popover
           overlay={[
             <Item key="0" vurl="/user">
-              个人主页
+              设置
             </Item>,
-            <Item key="1">设置</Item>,
-            <Item key="2">退出登录</Item>,
+            <Item key="1">退出登录</Item>,
           ]}
           onSelect={goItem}
         >
           <div className="userPic">
-            <img src={userpic} alt="" />
+            <img src={"http://10.3.135.29:3000/" + userpic} alt="" />
           </div>
         </Popover>
       ) : (
