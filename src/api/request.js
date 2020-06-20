@@ -117,6 +117,6 @@ export const editImgRequest = (img)=>{
     return axios.request({
         url:'/users/userimgedit',
         method:'post',
-        data:{img}
+        data:{img,id:1592536496000}
     })
 }
