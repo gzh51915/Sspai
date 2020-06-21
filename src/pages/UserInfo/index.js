@@ -4,8 +4,9 @@ import "./UserInfo.css";
 import HomeNavbar from "../../components/HomeNavbar";
 import EditUserInfo from "../../components/EditUserInfo";
 import EditUserPsw from "../../components/EditUserPsw";
+import { withRouter } from "react-router-dom";
 
-export default class UserInfo extends PureComponent {
+class UserInfo extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +16,12 @@ export default class UserInfo extends PureComponent {
       ],
     };
   }
-
+  componentWillMount() {
+    // 登录验证
+    if (!sessionStorage.user) {
+      this.props.history.push("/");
+    }
+  }
   render() {
     return (
       <div>
@@ -44,3 +50,4 @@ export default class UserInfo extends PureComponent {
     );
   }
 }
+export default withRouter(UserInfo);

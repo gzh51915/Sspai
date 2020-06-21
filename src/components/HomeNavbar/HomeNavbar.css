@@ -1,3 +1,12 @@
+.homeNavBar {
+  background-color: #292525;
+}
+.am-button-primary {
+  background-color: #292525;
+}
+.am-button-primary:before {
+  border: none !important;
+}
 .homeLogin {
   box-sizing: border-box;
   height: 25px;

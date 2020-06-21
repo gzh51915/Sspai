@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import {Toast, WingBlank} from "antd-mobile";
+import { WingBlank } from "antd-mobile";
 import { getHomeData } from "../../utils/http";
 import Swiper from "swiper";
 import "../../../node_modules/swiper/css/swiper.min.css";

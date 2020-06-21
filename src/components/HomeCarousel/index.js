@@ -35,7 +35,7 @@ export default class HomeCarousel extends Component {
               }}
             >
               <img
-                src={`https://cdn.sspai.com/${item.image}`}
+                src={`http://10.3.135.29:3000/${item.image}`}
                 alt=""
                 style={{
                   position: "relative",

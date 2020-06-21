@@ -1,47 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { WingBlank, WhiteSpace, Button, Toast } from "antd-mobile";
 import { getList } from "../../utils/http";
-import dayjs from "dayjs";
+import dayjs from "../../utils/day";
 import "./ArticleListItem.css";
-import logger from "less/lib/less/logger";
 
 export default function ArticleListItem(props) {
-  // 配置dayjs插件
-  var relativeTime = require("dayjs/plugin/relativeTime");
-  dayjs.extend(relativeTime);
-  var updateLocale = require("dayjs/plugin/updateLocale");
-  dayjs.extend(updateLocale);
-  // dayjs的替换文字，%s和%d是占位符
-  dayjs.updateLocale("en", {
-    relativeTime: {
-      future: "%s前",
-      past: "%s后",
-      s: "几秒钟",
-      m: "一分钟",
-      mm: "%d分钟",
-      h: "一小时",
-      hh: "%d小时",
-      d: "一天",
-      dd: "%d天",
-      M: "一个月",
-      MM: "%d个月",
-      y: "一年",
-      yy: "%d年",
-    },
-  });
-
   // sspai的cdn链接
-  const [cdnUrl] = useState("https://cdn.sspai.com/");
-  //控制请求
+  const [baseUrl] = useState("http://10.3.135.29:3000/");
+  // 控制请求
   const [request, setrequest] = useState(true);
   // 定义文章列表数据
   const [articleList, setArticleList] = useState([]);
   // 定义文章列表总条数
   const [total, setTotal] = useState(10);
-  //控制条数
+  // 控制条数
   const [skip, setSkip] = useState(10);
   // 根据点击的文章类型获取文章列表数据
-  // 看着复杂其实是为了解决useEffect的重复调用或只执行一次的问题
+  // 解决useEffect的重复调用或只执行一次的问题
   useEffect(() => {
     const { type } = props.match.params;
     setrequest(true);
@@ -54,16 +29,17 @@ export default function ArticleListItem(props) {
           }
         })
         .catch((err) => {
+          console.log(err);
           setArticleList([]);
         });
     }
     return function () {
-      //组件销毁时停止axios请求
+      // 组件销毁时停止axios请求
       setrequest(false);
-      //设置条数从10开始
+      // 设置条数从10开始
       setSkip(10);
     };
-  }, [props.match.params.type]);
+  }, [props.match.params, request]);
 
   const showMore = () => {
     const { type } = props.match.params;
@@ -80,7 +56,11 @@ export default function ArticleListItem(props) {
   };
 
   if (!articleList.length) {
-    return <div>暂无数据</div>;
+    return (
+      <div style={{ padding: "15px", fontSize: "25px", textAlign: "center" }}>
+        <p>无更多结果</p>
+      </div>
+    );
   }
   return (
     <React.Fragment>
@@ -91,33 +71,29 @@ export default function ArticleListItem(props) {
               <figure className="articleCard">
                 <div
                   className="imgbox"
-                  onClick={() =>
-                    (window.location.href = `https://sspai.com/post/${item.id}`)
-                  }
+                  onClick={() => (window.location.href = `/post/${item.id}`)}
                 >
                   <img
                     className="articleImg"
-                    src={cdnUrl + item.banner}
+                    src={baseUrl + item.banner}
                     alt=""
                   />
                   <div className="imgMask"></div>
                   <div className="articleMsg">
                     <img
-                      src={cdnUrl + item.author.avatar}
+                      src={baseUrl + item.avatar}
                       alt={item.title}
                       className="authorPic"
                     />
-                    <span className="authorName">{item.author.nickname}</span>
+                    <span className="authorName">{item.author}</span>
                     <span className="timeBefore">
-                      {dayjs().from(dayjs.unix(item.released_time))}
+                      {dayjs().from(dayjs.unix(dayjs(item.time).unix()))}
                     </span>
                   </div>
                 </div>
                 <figcaption className="articleTitle">
                   <h3
-                    onClick={() =>
-                      (window.location.href = `https://sspai.com/post/${item.id}`)
-                    }
+                    onClick={() => (window.location.href = `/post/${item.id}`)}
                   >
                     {item.title}
                   </h3>
@@ -128,7 +104,7 @@ export default function ArticleListItem(props) {
           </React.Fragment>
         );
       })}
-      <div
+      <Button
         style={{
           backgroundColor: "#fff",
           boxSizing: "border-box",
@@ -141,7 +117,7 @@ export default function ArticleListItem(props) {
         onClick={showMore}
       >
         查看更多
-      </div>
+      </Button>
     </React.Fragment>
   );
 }

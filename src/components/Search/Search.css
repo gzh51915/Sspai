@@ -1,13 +1,14 @@
 .my-drawer {
-  height: 300px;
   position: absolute;
-  top: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
 .my-drawer .am-drawer-sidebar {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+}
+.am-drawer-open {
+  height: 100vh;
 }
 .am-drawer-open.am-drawer.am-drawer-top .am-drawer-sidebar {
   box-shadow: none;
@@ -18,7 +19,7 @@
 }
 .searchZone {
   background: #fff;
-  height: 300px;
+  padding: 10px 0;
 }
 .seachBar {
   border: 1px solid rgb(136, 136, 136);

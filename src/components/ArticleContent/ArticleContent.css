@@ -1,0 +1,77 @@
+.articlePage {
+  background: #fff !important;
+}
+.articleBanner {
+  width: 100%;
+  min-height: 200px;
+  background: linear-gradient(0deg, #f4f4f4, #f4f4f4);
+  margin: 0;
+}
+.articleBanner img {
+  width: 100%;
+  max-height: 200px;
+  display: block;
+  position: relative;
+  object-fit: cover;
+  width: 100%;
+  margin: 0 auto;
+}
+.articleTitle h1 {
+  margin: 29px auto 20px;
+  font-weight: 500;
+  font-size: 28px;
+  color: #292525;
+  line-height: 42px;
+}
+.authorPic {
+  width: 24px;
+  height: 24px;
+  background: gray;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.authorName {
+  margin-left: 12px;
+  font-size: 12px;
+  line-height: 17px;
+}
+.postTime {
+  text-align: right;
+}
+
+.articleBody {
+  width: 100%;
+}
+
+/* 文章内部渲染页面的样式 */
+
+.articleCSS p {
+  margin: 0 0 20px 0;
+  line-height: 30px;
+  font-size: 16px;
+}
+.articleCSS a {
+  text-decoration: none;
+  border-bottom: 1px solid #d71a1b;
+  color: #292525;
+  transition: 0.2s;
+}
+.articleCSS a:hover {
+  border-bottom: 2px solid #d71a1b;
+}
+
+.articleCSS h2 {
+  font-weight: 600;
+  font-size: 24px;
+  margin-top: 60px;
+  margin-bottom: 26px;
+  line-height: 140%;
+}
+.articleCSS figure {
+  margin: 0;
+}
+.articleCSS img {
+  max-width: 100%;
+  position: relative;
+  vertical-align: middle;
+}

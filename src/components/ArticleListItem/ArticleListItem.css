@@ -12,6 +12,7 @@
 }
 .articleImg {
   width: 100%;
+  background: gray;
   height: auto;
   display: block;
 }

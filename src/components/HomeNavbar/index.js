@@ -3,6 +3,7 @@ import { NavBar, Icon, Button } from "antd-mobile";
 import Search from "../Search";
 import { withRouter } from "react-router-dom";
 import UserLogin from "../UserLogin";
+import "./HomeNavbar.css";
 
 function HomeNavbar(props) {
   const [isLogin] = useState(sessionStorage.user);
@@ -11,13 +12,20 @@ function HomeNavbar(props) {
     <div style={{ position: "relative" }}>
       <NavBar
         mode="dark"
+        className="homeNavBar"
         leftContent={
           <Button
             type="primary"
             inline
             key="0"
             size="small"
-            style={{ marginRight: "4px", height: "50px" }}
+            style={{
+              marginRight: "4px",
+              height: "50px",
+              border: "none",
+              outline: "none",
+            }}
+            activeStyle={false}
             onClick={() => props.history.push("/")}
           >
             <img
@@ -32,7 +40,7 @@ function HomeNavbar(props) {
             className="pointer"
             key="1"
             type="search"
-            color="#333"
+            color="#fff"
             style={{ marginRight: "16px" }}
             onClick={() => {
               setOpen(!open);
@@ -42,7 +50,7 @@ function HomeNavbar(props) {
             key="2"
             className="pointer"
             type="ellipsis"
-            color="#333"
+            color="#fff"
             style={{ marginRight: "16px" }}
           />,
           <UserLogin isLogin={isLogin} />,

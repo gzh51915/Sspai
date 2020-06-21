@@ -8,8 +8,9 @@ export const getHomeData = (type) => {
 // 请求文章列表
 export const getList = (type, skip) => {
   //type users goods
-  return axios.get("/article/" + type, {
+  return axios.get("/article/type", {
     params: {
+      type,
       skip,
       limit: 10,
     },
@@ -72,5 +73,33 @@ export const editPassword = (id, password) => {
   return axios.post("users/changepassword", {
     id,
     password,
+  });
+};
+
+// 获取自己的文章列表
+export const getOurArticle = () => {
+  return axios.get("article/articleList");
+};
+
+// 获取单一文章的内容
+export const getOneArticle = (id) => {
+  return axios.get("article/articleContent", {
+    params: {
+      id,
+    },
+  });
+};
+
+// 获取全部文章的内容
+export const getAllArticle = () => {
+  return axios.get("article/allArticlecontent");
+};
+
+// 搜索文章
+export const getSearch = (keyword) => {
+  return axios.get("/article/search", {
+    params: {
+      keyword,
+    },
   });
 };

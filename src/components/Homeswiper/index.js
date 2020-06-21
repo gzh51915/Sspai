@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { WingBlank } from "antd-mobile";
 import Swiper from "swiper";
 import { getHomeData } from "../../utils/http";
-import './Homeswiper.css'
+import "./HomeSwiper.css";
 import "../../../node_modules/swiper/css/swiper.min.css";
 
 export default class HomeSwiper extends Component {
