@@ -108,7 +108,7 @@ class User extends Component {
                 key:item._id,
                 name:item.username,
                 time:(item.regtime).toLocaleString(),
-                img:item.img,
+                img:'http://10.3.135.29:3000'+item.img,
                 nickname:item.nickname,
                 index:index+1
             }

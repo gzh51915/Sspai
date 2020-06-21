@@ -111,12 +111,21 @@ export const cartRequest = ()=>{
 
 //======================================================================================
 //测试接口
-//提交图片
-export const editImgRequest = (img)=>{
+
+export const editImgRequest = (id,img)=>{
     console.log(img);
     return axios.request({
         url:'/users/userimgedit',
         method:'post',
-        data:{img}
+        data:{id,img}
+    })
+}
+//提交图片
+export const editBannerRequest = (id,image)=>{
+    console.log(image);
+    return axios.request({
+        url:'/home/bannerimgedit',
+        method:'post',
+        data:{id,image}
     })
 }

@@ -10,6 +10,7 @@ import User from  '../people/user'
 import ArticleList from "../article/list";
 import ArticleNav from "../article/nav";
 import Banner from "../show/banner";
+import EditBanner from '../show/editBanner'
 import Cart from "../show/cart";
 import {tokenRequest} from "../../api/request";
 import Test from "../test";
@@ -85,7 +86,8 @@ class Index extends Component {
                             <Route path='/home/user' component={User}/>
                             <Route path='/home/articleNav' component={ArticleNav}/>
                             <Route path='/home/articleList' component={ArticleList}/>
-                            <Route path='/home/banner' component={Banner}/>
+                            <Route path='/home/banner' component={Banner} exact/>
+                            <Route path='/home/banner/:id' component={EditBanner}/>
                             <Route path='/home/cart' component={Cart}/>
                             <Route path='/home/test' component={Test}/>
                             <Redirect from='/home' to='/home/index' exact/>
