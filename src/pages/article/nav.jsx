@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import MyBreadcrumb from "../../conponents/my-Breadcrumb";
 //UI组件
-import {Empty, Card, message, Table, Space, Button, Modal, Form, Input, Pagination, Switch as Switch1,
-      InputNumber,} from 'antd';
+import {Empty, Card, message, Table, Space, Button, Modal, Form, Input,  Switch as Switch1,
+      } from 'antd';
 //API请求
 import {navRequest} from '../../api/request'
 //UI组件
@@ -32,7 +32,6 @@ class Nav extends Component {
         }else {
             message.error('获取文章分栏信息失败')
         }
-        console.log(result);
     }
     editManger = (record) => {
         this.setState({
@@ -47,9 +46,9 @@ class Nav extends Component {
             ModalText: 'The modal will be closed after two seconds',
             confirmLoading: true,
         });
-        console.log('1',this.formRef)
+
         const {value} = this.formRef.props
-        console.log('2',value)
+
         setTimeout(() => {
             this.setState({
                 visible: false,
@@ -142,7 +141,6 @@ class Nav extends Component {
                                 <Form.Item
                                     name={['user', 'name']}
                                     label="分栏名称"
-                                    // initialValue={this.state.firstName}
                                     rules={[
                                         {
                                             required: true,
@@ -162,11 +160,7 @@ class Nav extends Component {
                                 >
                                     <Input onChange={this.onChange1}/>
                                 </Form.Item>
-                                {/*<Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>*/}
-                                {/*    <Button type="primary" htmlType="submit">*/}
-                                {/*        Submit*/}
-                                {/*    </Button>*/}
-                                {/*</Form.Item>*/}
+ 
                             </Form>
                         </Modal>
                     </Card>

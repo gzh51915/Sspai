@@ -4,8 +4,17 @@ import MyBreadcrumb from "../../conponents/my-Breadcrumb";
 import MyModal from "../../conponents/my-Modal";
 import RemoveModal from "../../conponents/Remove-Modal";
 //UI组件
-import {Empty, Card, message, Table, Space, Switch as Switch1, Button, Modal, Form, Input,Pagination} from 'antd';
-import {LockOutlined, UserOutlined} from "@ant-design/icons";
+import {
+    Empty,
+    Card,
+    message,
+    Table,
+    Space,
+    Switch as Switch1,
+    Button,
+    Avatar
+} from 'antd';
+import { UserOutlined} from "@ant-design/icons";
 //接口请求
 import {adminRequest,changeRequest,addAdminRequest,removeAdminRequest} from '../../api/request'
 //UI组件
@@ -121,7 +130,7 @@ class Admin extends Component {
         })
     }
     render() {
-        let {showAddDialogVisible,showRemoveDialogVisible,_id} = this.state
+        let {showAddDialogVisible,showRemoveDialogVisible} = this.state
         let {adminList} = this.state
         //table表格数据
         let dataSource = []
@@ -132,7 +141,8 @@ class Admin extends Component {
                 time:(item.addtime).toLocaleString(),
                 power:item.power,
                 role:item.role,
-                index:index+1
+                index:index+1,
+                img:item.avatar
             }
             dataSource.push(temp)
         })
@@ -152,6 +162,11 @@ class Admin extends Component {
                             bordered dataSource={dataSource}>
                             <Column title="#" dataIndex="index" key="index" />
                             <Column title="用户名" dataIndex="name" key="name" />
+                            <Column title="头像" dataIndex="img" key="img"
+                                    render={(text,record)=>{
+                                        return <Avatar src={'http://10.3.135.29:3000/'+text} size={50} icon={<UserOutlined />}/>
+                                    }}
+                            />
                             <Column title="角色" dataIndex="role" key="role" />
                             <Column title="时间" dataIndex="time" key="time" />
                             <Column title="权限" dataIndex="power" key="power"

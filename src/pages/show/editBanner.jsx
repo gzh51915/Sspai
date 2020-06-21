@@ -1,7 +1,6 @@
-import React, { useState, useEffect,useCallback } from 'react'
-import { Form, Input, InputNumber, Button, Upload, Avatar, message } from 'antd';
+import React, { useState, useCallback } from 'react'
+import { Form, Input,  Button, Upload, Avatar, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { useHistory } from "react-router-dom";
 import { withRouter } from 'react-router-dom'
 import { editBannerRequest } from '../../api/request'
 import './editBanner.scss'
@@ -23,9 +22,6 @@ function EditBanner(props) {
         types: {
             email: '${label} is not validate email!',
             number: '${label} is not a validate number!',
-        },
-        number: {
-            range: '${label} must be between ${min} and ${max}',
         },
     };
     const onFinish = values => {
@@ -76,21 +72,15 @@ function EditBanner(props) {
             setLoading(true)
             return;
         }
-        console.log(loading)
-        console.log('info',info)
-        console.log(info.file.status)
-        // if (info.file.status === 'done') {
-            // setLoading(false)
+        if (info.file.status === 'done') {
             getBase64(info.file.originFileObj, imageUrl =>
             {
                  setLoading(false)
                  editBannerRequest(props.location.state.key,imageUrl)
-                //  console.log(res)
                  setImageUrl(imageUrl)
             }
-             
             );
-        // }
+        }
     },[loading])
 
     return (
@@ -122,7 +112,7 @@ function EditBanner(props) {
                             listType="picture-card"
                             className="avatar-uploader"
                             showUploadList={false}
-                            action="http://localhost:3000/users/userimgedit"
+                            action="http://10.3.135.29:3000/users/userimgedit"
                             beforeUpload={beforeUpload}
                             onChange={handleChange}
                             headers={{authorization:sessionStorage.getItem('adminToken')}}
