@@ -11,6 +11,8 @@ import ArticleList from "../article/list";
 import ArticleNav from "../article/nav";
 import Banner from "../show/banner";
 import Cart from "../show/cart";
+import ArticleContent from '../article/content'
+import AddArticle from  '../article/addarticle'
 import {tokenRequest} from "../../api/request";
 import Test from "../test";
 const {Header, Sider, Content} = Layout;
@@ -57,7 +59,9 @@ class Index extends Component {
                             key="sub2" title='文章管理'
                         >
                             <Menu.Item key="文章分栏管理"><Link to='/home/articleNav'>文章分栏管理</Link></Menu.Item>
-                            <Menu.Item key="文章内容管理"><Link to='/home/articleList'>文章内容管理</Link></Menu.Item>
+                            <Menu.Item key="文章列表管理"><Link to='/home/articleList'>文章列表管理</Link></Menu.Item>
+                            <Menu.Item key="文章内容管理"><Link to='/home/articleContent'>文章内容管理</Link></Menu.Item>
+                            <Menu.Item key="添加文章管理"><Link to='/home/addarticle'>添加文章管理</Link></Menu.Item>
                         </SubMenu>
                         <SubMenu
                             style={{backgroundColor:"#ccc"}}
@@ -85,6 +89,9 @@ class Index extends Component {
                             <Route path='/home/user' component={User}/>
                             <Route path='/home/articleNav' component={ArticleNav}/>
                             <Route path='/home/articleList' component={ArticleList}/>
+                            <Route path='/home/articleContent' component={ArticleContent}/>
+                            <Route path='/home/addarticle' component={AddArticle}/>
+
                             <Route path='/home/banner' component={Banner}/>
                             <Route path='/home/cart' component={Cart}/>
                             <Route path='/home/test' component={Test}/>

@@ -42,9 +42,6 @@ class Test extends Component {
                     console.log(result);
                 }),
             );
-
-
-
         }
     };
     render() {

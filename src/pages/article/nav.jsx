@@ -24,7 +24,6 @@ class Nav extends Component {
     componentDidMount() {
         //调用获取文章分栏数据
         this.getNavList()
-        console.log(1);
     }
     //获取文章分栏数据
     getNavList = async () =>{
@@ -36,14 +35,15 @@ class Nav extends Component {
         }else {
             message.error('获取文章分栏信息失败')
         }
-        console.log(result);
     }
     editManger = (record) => {
         console.log(record);
+
         this.setState({
             visible: true,
             firstName:record.title
         });
+        console.log('1',this.formRef.current)
     };
 
     handleOk = () => {
@@ -60,13 +60,12 @@ class Nav extends Component {
     };
 
     handleCancel = () => {
-        console.log('Clicked cancel button');
-        this.setState({
-            visible: false
-        });
+        // this.setState({
+        //     visible: false
+        // });
     };
     onChange = (value) => {
-        console.log('changed', value)
+        // console.log('changed', value)
         // this.setState({
         //     firstName:value.title
         // });
@@ -142,7 +141,7 @@ class Nav extends Component {
                             confirmLoading={confirmLoading}
                             onCancel={this.handleCancel}
                         >
-                            <Form {...layout} ref={this.formRef} name="user"  onFinish={onFinish} validateMessages={validateMessages}>
+                            <Form {...layout}  name="user"  onFinish={onFinish} validateMessages={validateMessages}>
                                 <Form.Item
                                     // name={['user', 'name']}
                                     label="分栏名称"
@@ -153,7 +152,7 @@ class Nav extends Component {
                                         },
                                     ]}
                                 >
-                                    <Input value={this.state.firstName} onChange={this.onChange}/>
+                                    <Input ref={this.formRef}  onChange={this.onChange}/>
                                 </Form.Item>
                                 <Form.Item
                                     name={['user', 'email']}

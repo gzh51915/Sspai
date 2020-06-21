@@ -5,7 +5,7 @@ class List extends Component {
     render() {
         return (
             <div>
-                <MyBreadcrumb list={['首页','文章管理','文章内容管理']}/>
+                <MyBreadcrumb list={['首页','文章管理','文章列表管理']}/>
 
             </div>
         );

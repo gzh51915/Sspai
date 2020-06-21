@@ -111,12 +111,41 @@ export const cartRequest = ()=>{
 
 //======================================================================================
 //测试接口
-//提交图片
+//改变用户头像图片
 export const editImgRequest = (img)=>{
     console.log(img);
     return axios.request({
         url:'/users/userimgedit',
         method:'post',
         data:{img,id:1592536496000}
+    })
+}
+//=======================================
+
+//存储文章封面
+export const saveArticleImgRequest = (img)=>{
+    return axios.request({
+        url:'/article/saveArticleImg',
+        method:'post',
+        data : {img}
+    })
+}
+//添加文章内容
+export const addArticleRequest = (articleMsg)=>{
+    console.log(articleMsg);
+    return axios.request({
+        url:'/article/addarticle',
+        method:'post',
+        data : {articleMsg}
+    })
+}
+
+//添加文章列表
+export const addArticleListRequest = (articleMsg)=>{
+    console.log(articleMsg);
+    return axios.request({
+        url:'/article/addarticlelist',
+        method:'post',
+        data : {articleMsg}
     })
 }
