@@ -1,7 +1,7 @@
 {
   "name": "sspai",
   "version": "0.1.0",
-  "homepage": "./",
+  "homepage": "http://10.3.135.29:3000/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
