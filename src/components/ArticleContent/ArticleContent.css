@@ -67,9 +67,71 @@
   margin-bottom: 26px;
   line-height: 140%;
 }
-.articleCSS figure {
-  margin: 0;
+
+.articleCSS h3 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 60px;
+  margin-bottom: 16px;
+  line-height: 140%;
 }
+
+.articleCSS figure {
+  position: relative;
+  text-align: center;
+  outline: none;
+  margin: 40px auto;
+}
+
+.articleCSS figure figcaption {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  text-align: center;
+  color: #8e8787;
+  margin-top: 20px;
+}
+
+.articleCSS hr {
+  margin: 20px auto;
+  border: none;
+  border-top: 1px solid #e5e5e5;
+}
+
+.articleCSS pre {
+  background: #e4d1d1;
+  padding: 20px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.articleCSS code {
+  background-color: #f4f4f4;
+  display: inline-block;
+  word-break: break-all;
+  padding: 0 5px;
+}
+.articleCSS pre code {
+  font-size: 14px;
+  color: #4c4e4d;
+  line-height: 30px;
+  font-weight: 400 !important;
+}
+.articleCSS ul {
+  padding-left: 36px;
+  padding-right: 36px;
+  margin: 40px auto;
+  box-sizing: border-box;
+}
+.articleCSS ul li {
+  margin: 10px 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 31px;
+  color: #4c4e4d;
+}
+
 .articleCSS img {
   max-width: 100%;
   position: relative;

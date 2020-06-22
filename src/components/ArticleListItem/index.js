@@ -20,12 +20,20 @@ export default function ArticleListItem(props) {
   useEffect(() => {
     const { type } = props.match.params;
     setrequest(true);
+    console.log(type);
+
     if (request) {
       getList(type)
         .then((res) => {
           if (res.data.code === 200) {
-            setArticleList(res.data.data);
-            setTotal(res.data.total);
+            console.log(res);
+
+            if (res.data.data.length !== 0) {
+              setArticleList(res.data.data);
+              setTotal(res.data.total);
+            } else {
+              setArticleList([]);
+            }
           }
         })
         .catch((err) => {
