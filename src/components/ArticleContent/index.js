@@ -9,7 +9,7 @@ class ArticleContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      baseUrl: "http://10.3.135.29:3000",
+      baseUrl: "http://47.115.46.80:3000/",
       img: "",
       title: "",
       html: "",

@@ -17,7 +17,7 @@ function Search(props) {
     searchRef.current.state.value = "";
   };
   const searchCon = (
-    <div className="searchZone">
+    <div className="searchZone" style={{ zIndex: 100 }}>
       <WingBlank style={{ background: "#fff" }}>
         <SearchBar
           placeholder="Search"
@@ -44,7 +44,7 @@ function Search(props) {
   }, [props.open]);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", zIndex: 100 }}>
       <Drawer
         className="my-drawer"
         enableDragHandle

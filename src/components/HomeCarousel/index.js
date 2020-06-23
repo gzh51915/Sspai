@@ -35,7 +35,7 @@ export default class HomeCarousel extends Component {
               }}
             >
               <img
-                src={`http://10.3.135.29:3000/${item.image}`}
+                src={`http://47.115.46.80:3000/${item.image}`}
                 alt=""
                 style={{
                   position: "relative",

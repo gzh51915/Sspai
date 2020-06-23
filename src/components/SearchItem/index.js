@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import dayjs from "../../utils/day";
 
 function SearchItem(props) {
-  const [baseUrl] = useState("http://10.3.135.29:3000/");
+  const [baseUrl] = useState("http://47.115.46.80:3000/");
   const [searchList, setSearchList] = useState([]);
   // 定义文章列表数据
   useEffect(() => {

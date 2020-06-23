@@ -45,7 +45,7 @@ function UserLogin(props) {
           onSelect={goItem}
         >
           <div className="userPic">
-            <img src={"http://10.3.135.29:3000/" + userpic} alt="" />
+            <img src={"http://47.115.46.80:3000/" + userpic} alt="" />
           </div>
         </Popover>
       ) : (

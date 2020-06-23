@@ -112,7 +112,10 @@ export default class EditUserInfo extends Component {
       <WingBlank className="editInfo" size="lg">
         <Flex className="editBox">
           <Flex.Item className="picSection">
-            <img src={"http://10.3.135.29:3000/" + this.state.userPic} alt="" />
+            <img
+              src={"http://47.115.46.80:3000/" + this.state.userPic}
+              alt=""
+            />
           </Flex.Item>
           <Flex.Item className="picBtnSection">
             <Flex justify="end">

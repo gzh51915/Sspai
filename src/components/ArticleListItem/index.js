@@ -6,7 +6,7 @@ import "./ArticleListItem.css";
 
 export default function ArticleListItem(props) {
   // sspai的cdn链接
-  const [baseUrl] = useState("http://10.3.135.29:3000/");
+  const [baseUrl] = useState("http://47.115.46.80:3000/");
   // 控制请求
   const [request, setrequest] = useState(true);
   // 定义文章列表数据
