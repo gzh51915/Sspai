@@ -44,7 +44,7 @@
         - page：页面
 
 ## 页面截图
-- ![Alt text](./pictures/h1.png)
-- ![Alt text](./pictures/h2.png)
-- ![Alt text](./pictures/h3.png)
-- ![Alt text](./pictures/h4.png)
+![h1.png](https://i.loli.net/2020/06/24/oAc9RmqVC1vkaJH.png)
+![h2.png](https://i.loli.net/2020/06/24/NIaHOiQo9r3XDyF.png)
+![h3.png](https://i.loli.net/2020/06/24/XRydVNwiJrWbYto.png)
+![h4.png](https://i.loli.net/2020/06/24/lep1Cq6NshinfXd.png)
