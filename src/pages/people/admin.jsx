@@ -164,7 +164,7 @@ class Admin extends Component {
                             <Column title="用户名" dataIndex="name" key="name" />
                             <Column title="头像" dataIndex="img" key="img"
                                     render={(text,record)=>{
-                                        return <Avatar src={'http://10.3.135.29:3000/'+text} size={50} icon={<UserOutlined />}/>
+                                        return <Avatar src={'http://47.115.127.10:3000/'+text} size={50} icon={<UserOutlined />}/>
                                     }}
                             />
                             <Column title="角色" dataIndex="role" key="role" />

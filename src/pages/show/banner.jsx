@@ -52,7 +52,7 @@ function Banner() {
                         key: item.id,
                         idx: index + 1,
                         title: item.title,
-                        url: 'http://10.3.135.29:3000/' + item.image
+                        url: 'http://47.115.127.10:3000/' + item.image
                      
                     })
                 }, [])

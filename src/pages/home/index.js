@@ -1,21 +1,57 @@
-import React, {Component} from 'react';
+import React, {Component,lazy} from 'react';
 import MyBreadcrumb from '../../conponents/my-Breadcrumb'
 import {Layout, Button,message} from 'antd';
 import './home.css'
 import {Menu} from 'antd';
 import {Switch,Route,Link,Redirect} from 'react-router-dom'
-import HomeIndex from "../index";
-import Admin from "../people/admin";
-import User from  '../people/user'
-import ArticleList from "../article/list";
-import ArticleNav from "../article/nav";
-import Banner from "../show/banner";
-import EditBanner from '../show/editBanner'
-import Cart from "../show/cart";
-import ArticleContent from '../article/content'
-import AddArticle from  '../article/addarticle'
+import Loading from '../../conponents/loading'
+import Loadable from 'react-loadable'
 import {tokenRequest} from "../../api/request";
-import Test from "../test";
+const HomeIndex = Loadable({
+    loader:() => import("../index"),
+    loading:Loading
+})
+const Admin = Loadable({
+    loader:() => import("../people/admin"),
+    loading:Loading
+})
+const User = Loadable({
+    loader:() => import('../people/user'),
+    loading:Loading
+})
+const ArticleList = Loadable({
+    loader:() => import("../article/list"),
+    loading:Loading
+})
+const ArticleNav = Loadable({
+    loader:() => import("../article/nav"),
+    loading:Loading
+})
+const Banner = Loadable({
+    loader:() => import("../show/banner"),
+    loading:Loading
+})
+const EditBanner = Loadable({
+    loader:() => import('../show/editBanner'),
+    loading:Loading
+})
+const ArticleContent = Loadable({
+    loader:() => import('../article/content'),
+    loading:Loading
+})
+const AddArticle = Loadable({
+    loader:() => import('../article/addarticle'),
+    loading:Loading
+})
+const Test = Loadable({
+    loader:() => import("../test"),
+    loading:Loading
+})
+const Cart = Loadable({
+    loader:() => import("../../pages/show/cart"),
+    loading:Loading
+})
+
 const {Header, Sider, Content} = Layout;
 const {SubMenu} = Menu;
 

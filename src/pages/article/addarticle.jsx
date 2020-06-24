@@ -178,7 +178,7 @@ class Content extends Component {
                                 listType="picture-card"
                                 className="avatar-uploader"
                                 showUploadList={false}
-                                action="http://10.3.135.29:3000/article/saveArticleImg"
+                                action="http://47.115.127.10:3000/article/saveArticleImg"
                                 beforeUpload={beforeUpload}
                                 onChange={this.handleChange}
                                 headers={{authorization:sessionStorage.getItem('adminToken')}}

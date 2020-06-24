@@ -1,9 +1,18 @@
-import React from 'react';
+import React  from 'react';
+import Loadable from 'react-loadable'
 import './App.css'
 import {Switch,Route,Redirect} from 'react-router-dom'
-
-import Login from './pages/login'
-import Home from './pages/home'
+import Loading from './conponents/loading'
+const Login = Loadable({
+  loader:() => import('./pages/login'),
+  loading:Loading
+})
+const Home = Loadable({
+  loader:() => import('./pages/home'),
+  loading:Loading
+})
+// const Login = lazy(()=> import('./pages/login'))
+// const Home = lazy(()=> import('./pages/home'))
 function App() {
   return (
     <div>

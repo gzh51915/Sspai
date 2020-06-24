@@ -112,7 +112,7 @@ function EditBanner(props) {
                             listType="picture-card"
                             className="avatar-uploader"
                             showUploadList={false}
-                            action="http://10.3.135.29:3000/users/userimgedit"
+                            action="http://47.115.127.10:3000/users/userimgedit"
                             beforeUpload={beforeUpload}
                             onChange={handleChange}
                             headers={{authorization:sessionStorage.getItem('adminToken')}}
